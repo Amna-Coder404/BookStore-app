@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native'
 
-export default function Index() {
+export default function Home() {
     return (
         <View>
-            <Text>Index</Text>
+            <Text>HOME Tab</Text>
         </View>
     )
 }

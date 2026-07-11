@@ -2,7 +2,7 @@ import styles from '@/assets/styles/login.styles'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
-import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, Text, TextInput, TouchableNativeFeedbackComponent, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import COLORS from '../../../constants/colors'
 import { useAuthStore } from '../../../store/authStore'
 
@@ -17,10 +17,10 @@ export default function SignUp() {
 
     const handleSignUp = async () => {
         const result = await register(username, email, password);
+
         if (!result.success) Alert.alert("ERROR", result.error);
     }
-    console.log(user);
-    console.log(token);
+
 
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? 'padding' : 'height'}>
@@ -36,7 +36,7 @@ export default function SignUp() {
                     <View style={styles.formContainer}>
                         {/* Username Input */}
                         <View style={styles.inputGroup}>
-                            <Text style={styles.label}>Full Name</Text>
+                            <Text style={styles.label}>Username</Text>
                             <View style={styles.inputContainer}>
                                 <Ionicons
                                     name="person-outline"
@@ -47,7 +47,7 @@ export default function SignUp() {
 
                                 <TextInput
                                     style={styles.input}
-                                    placeholder="John Doe"
+                                    placeholder="johndoe"
                                     placeholderTextColor={COLORS.placeholderText}
                                     value={username}
                                     onChangeText={setUsername}
