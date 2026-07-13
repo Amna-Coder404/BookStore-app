@@ -6,6 +6,8 @@ export default function Profile() {
     return (
         <View>
             <Text>Hello  {user?.username}</Text>
+            <Text>Email : {user?.email}</Text>
+
 
             <TouchableOpacity onPress={() => logout()}>
                 <Text>Logout</Text>

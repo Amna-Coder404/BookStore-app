@@ -11,6 +11,7 @@ export default function RootLayout() {
 
   const { checkAuth, user, token } = useAuthStore();
 
+  // Check user are sign or not
   useEffect(() => {
     checkAuth();
   }, [])
