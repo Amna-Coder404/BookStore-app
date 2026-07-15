@@ -12,7 +12,7 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [ShowPassword, setShowPassword] = useState(false);
 
-    const { user, isLoading, register, token } = useAuthStore();
+    const { isLoading, register } = useAuthStore();
     const router = useRouter();
 
     const handleSignUp = async () => {

@@ -6,14 +6,18 @@ import { ActivityIndicator, Alert, Image, KeyboardAvoidingView, Platform, Scroll
 import COLORS from "../../../constants/colors";
 
 import * as ImagePicker from "expo-image-picker";
+
 import { API_URL } from "../../../constants/api";
 import { useAuthStore } from "../../../store/authStore";
+
+
+
 export default function Create() {
     const [title, setTitle] = useState("");
     const [caption, setCaption] = useState("");
     const [rating, setRating] = useState(0);
-    const [image, setImage] = useState<string | null>(null);//to display the selected image
-    const [imageBase64, setImageBase64] = useState<string | null>(null);//image to text link 
+    const [image, setImage] = useState(null);//to display the selected image
+    const [imageBase64, setImageBase64] = useState(null);//image to text link 
     const [loading, setLoading] = useState(false);
 
 
@@ -97,11 +101,10 @@ export default function Create() {
             setImage(null);
             setImageBase64(null);
 
-            router.push("/");
+            router.replace("/");
         } catch (error) {
-            const e = error as Error;
-            console.error("Error creating post :", e);
-            Alert.alert("ERROR", e.message || "Somthing went wrong");
+            console.error("Error creating post :", error);
+            Alert.alert("ERROR", error.message || "Somthing went wrong");
         } finally {
             setLoading(false);
         }
@@ -125,7 +128,6 @@ export default function Create() {
 
         return <View style={styles.ratingContainer}>{stars}</View>
     }
-    console.log("Token is", token);
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <ScrollView contentContainerStyle={styles.container} style={styles.scrollViewStyle} >

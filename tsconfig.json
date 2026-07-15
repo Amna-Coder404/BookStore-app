@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "allowJs": true,
     "paths": {
       "@/*": [
         "./src/*"
@@ -16,6 +17,16 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "store/authStore.js"
+    "store/authStore.js",
+    "src/app/_layout.jsx",
+    "src/app/(tabs)/index.jsx",
+    "src/app/(tabs)/create.jsx",
+    "src/app/(tabs)/_layout.jsx",
+    "components/SafeScreen.jsx",
+    "constants/colors.js",
+    "src/app/(auth)/index.jsx",
+    "src/app/(auth)/signup.jsx",
+    "src/app/(auth)/_layout.jsx",
+    "src/app/(tabs)/profile.js",
   ]
 }
