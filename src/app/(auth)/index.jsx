@@ -11,7 +11,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [ShowPassword, setShowPassword] = useState(false);
 
-    const { isLoading, login, } = useAuthStore();
+    const { isLoading, login, isCheckingAuth } = useAuthStore();
 
     const handleLogin = async () => {
         const result = await login(email, password);
@@ -19,6 +19,7 @@ export default function Login() {
         if (!result.success) Alert.alert("ERROR", result.error);
     }
 
+    if (isCheckingAuth) return null
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"
         }>
