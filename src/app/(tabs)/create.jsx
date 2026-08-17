@@ -2,6 +2,10 @@ import styles from "@/assets/styles/create.styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
+
+import OfflineCreateModal from "../../../components/OfflineCreateModal";
+import { useNetworkStatus } from "../../../hooks/useNetworkStatus";
+
 import { ActivityIndicator, Alert, Image, KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import COLORS from "../../../constants/colors";
 
@@ -19,7 +23,8 @@ export default function Create() {
     const [image, setImage] = useState(null);//to display the selected image
     const [imageBase64, setImageBase64] = useState(null);//image to text link 
     const [loading, setLoading] = useState(false);
-
+    const [showOfflineModal, setShowOfflineModal] = useState(false);
+    const { isOnline } = useNetworkStatus();
 
     const router = useRouter();
     const { token } = useAuthStore()
@@ -61,10 +66,17 @@ export default function Create() {
     }
 
     const handleSubmit = async () => {
+
+        // 1. Check internet first
+        if (!isOnline) {
+            setShowOfflineModal(true);
+            return;
+        }
         if (!title || !caption || !imageBase64 || !rating || !image) {
             Alert.alert("ERROR ", "Please fill all fields");
             return;
         }
+
 
         try {
             setLoading(true);
@@ -212,6 +224,11 @@ export default function Create() {
 
                 {/* ---------------------End-View------------ */}
             </ScrollView>
+
+            <OfflineCreateModal
+                visible={showOfflineModal}
+                onClose={() => setShowOfflineModal(false)}
+            />
         </KeyboardAvoidingView >
     )
 }

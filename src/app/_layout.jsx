@@ -3,10 +3,10 @@ import { SplashScreen, Stack, useRouter, useSegments } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+
+import OfflineBanner from "../../components/OfflineBanner"
 import SafeScreen from '../../components/SafeScreen'
 import { useAuthStore } from '../../store/authStore'
-
-
 
 SplashScreen.preventAutoHideAsync();
 
@@ -47,11 +47,14 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <SafeScreen>
+        <OfflineBanner />
         <Stack screenOptions={{ headerShown: false }}>
 
           <Stack.Screen name='(tabs)' />
           <Stack.Screen name='(auth)' />
+
         </Stack>
+
       </SafeScreen>
       <StatusBar style='auto' />
     </SafeAreaProvider>
