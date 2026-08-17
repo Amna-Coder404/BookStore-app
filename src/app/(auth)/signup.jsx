@@ -12,7 +12,7 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [ShowPassword, setShowPassword] = useState(false);
 
-    const { isLoading, register } = useAuthStore();
+    const { registerLoading, register } = useAuthStore();
     const router = useRouter();
 
     const handleSignUp = async () => {
@@ -52,6 +52,7 @@ export default function SignUp() {
                                     value={username}
                                     onChangeText={setUsername}
                                     autoCapitalize='none'
+                                    editable={!registerLoading}
                                 />
 
                             </View>
@@ -77,6 +78,7 @@ export default function SignUp() {
                                     onChangeText={setEmail}
                                     keyboardType='email-address'
                                     autoCapitalize='none'
+                                    editable={!registerLoading}
                                 />
                             </View>
                         </View>
@@ -100,10 +102,11 @@ export default function SignUp() {
                                     value={password}
                                     onChangeText={setPassword}
                                     secureTextEntry={!ShowPassword}
+                                    editable={!registerLoading}
                                 />
 
                                 {/* RIGHT ICON */}
-                                <TouchableOpacity onPress={() => setShowPassword(!ShowPassword)} style={styles.eyeIcon}>
+                                <TouchableOpacity onPress={() => setShowPassword(!ShowPassword)} style={styles.eyeIcon} disabled={registerLoading}>
                                     <Ionicons
                                         name={ShowPassword ? "eye-outline" : "eye-off-outline"}
                                         size={20}
@@ -114,17 +117,29 @@ export default function SignUp() {
                         </View>
 
                         {/*  Sign Up BUTTON */}
-                        <TouchableOpacity style={styles.button} onPress={handleSignUp} disabled={isLoading}>
-                            {
-                                isLoading ? (
-                                    <ActivityIndicator color={"#fff"} />
-                                ) :
-                                    (
-                                        <Text style={styles.buttonText}>Sign Up</Text>
-                                    )
-                            }
-                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={handleSignUp}
+                            disabled={registerLoading}
+                            activeOpacity={0.8}  >
+                            {registerLoading ? (
+                                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                                    <ActivityIndicator color="#fff" />
 
+                                    <Text style={[
+                                        styles.buttonText,
+                                        { marginLeft: 8 }
+                                    ]}
+                                    >
+                                        Creating account...
+                                    </Text>
+                                </View>
+                            ) : (
+                                <Text style={styles.buttonText}>
+                                    Sign Up
+                                </Text>
+                            )}
+                        </TouchableOpacity>
                         {/* FOOTER */}
                         <View style={styles.footer}>
                             <Text style={styles.footerText}>Already have an account ? </Text>

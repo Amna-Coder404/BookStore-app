@@ -11,7 +11,7 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [ShowPassword, setShowPassword] = useState(false);
 
-    const { isLoading, login, isCheckingAuth } = useAuthStore();
+    const { loginLoading, login, isCheckingAuth } = useAuthStore();
 
     const handleLogin = async () => {
         const result = await login(email, password);
@@ -53,6 +53,7 @@ export default function Login() {
                                     onChangeText={setEmail}
                                     keyboardType="email-address"
                                     autoCapitalize="none"
+                                    editable={!loginLoading}
                                 />
 
                             </View>
@@ -77,10 +78,11 @@ export default function Login() {
                                     value={password}
                                     onChangeText={setPassword}
                                     secureTextEntry={!ShowPassword}
+                                    editable={!loginLoading}
                                 />
 
                                 {/* RIGHT ICON */}
-                                <TouchableOpacity onPress={() => setShowPassword(!ShowPassword)} style={styles.eyeIcon}>
+                                <TouchableOpacity onPress={() => setShowPassword(!ShowPassword)} style={styles.eyeIcon} disabled={loginLoading}>
                                     <Ionicons
                                         name={ShowPassword ? "eye-outline" : "eye-off-outline"}
                                         size={20}
@@ -91,17 +93,31 @@ export default function Login() {
                         </View>
 
                         {/*  LOGIN BUTTON */}
-                        <TouchableOpacity style={styles.button} onPress={handleLogin} disabled={isLoading}>
-                            {
-                                isLoading ? (
-                                    <ActivityIndicator color={"#fff"} />
-                                ) :
-                                    (
-                                        <Text style={styles.buttonText}>Login</Text>
-                                    )
-                            }
-                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={handleLogin}
+                            disabled={loginLoading}
+                            activeOpacity={0.8}
+                        >
+                            {loginLoading ? (
+                                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                                    <ActivityIndicator color="#fff" />
 
+                                    <Text
+                                        style={[
+                                            styles.buttonText,
+                                            { marginLeft: 8 }
+                                        ]}
+                                    >
+                                        Logging in...
+                                    </Text>
+                                </View>
+                            ) : (
+                                <Text style={styles.buttonText}>
+                                    Login
+                                </Text>
+                            )}
+                        </TouchableOpacity>
                         {/* FOOTER */}
                         <View style={styles.footer}>
                             <Text style={styles.footerText}>Don't have an account ? </Text>

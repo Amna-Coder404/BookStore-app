@@ -6,51 +6,88 @@ import COLORS from '../../../constants/colors';
 
 
 export default function TabsLayout() {
-    const insets = useSafeAreaInsets()
+    const insets = useSafeAreaInsets();
+
+    const TAB_BAR_HEIGHT = 60;
+
     return (
-        <Tabs screenOptions={{
-            headerShown: false,
-            tabBarActiveTintColor: COLORS.primary,
-            headerTitleStyle: {
-                color: COLORS.textPrimary,
-                fontWeight: "600"
-            },
-            headerShadowVisible: false,
-            tabBarStyle: {
-                backgroundColor: COLORS.cardBackground,
-                borderTopColor: COLORS.border,
-                borderTopWidth: 1,
-                paddingTop: insets.bottom,
-                height: 60 + insets.bottom
-            }
-        }}>
+        <Tabs
+            screenOptions={{
+                headerShown: false,
+
+                tabBarActiveTintColor: COLORS.primary,
+                tabBarInactiveTintColor: COLORS.textSecondary,
+
+                tabBarStyle: {
+                    backgroundColor: COLORS.cardBackground,
+
+                    borderTopColor: COLORS.border,
+                    borderTopWidth: 1,
+
+                    height: TAB_BAR_HEIGHT + insets.bottom,
+
+                    paddingTop: 6,
+                    paddingBottom: insets.bottom + 4,
+
+                    elevation: 0,
+                    shadowOpacity: 0,
+                },
+
+                tabBarLabelStyle: {
+                    fontSize: 12,
+                    fontWeight: "600",
+                    marginTop: 2,
+                },
+
+                tabBarIconStyle: {
+                    marginBottom: 0,
+                },
+            }}
+        >
             <Tabs.Screen
                 name="index"
                 options={{
                     title: "Home",
+
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="home-outline" size={size} color={color} />
+                        <Ionicons
+                            name="home-outline"
+                            size={size}
+                            color={color}
+                        />
                     ),
                 }}
             />
+
             <Tabs.Screen
                 name="create"
                 options={{
                     title: "Create",
+
                     tabBarIcon: ({ color, size }) => (
-                        <AntDesign name="plus-circle" size={size} color={color} />
+                        <AntDesign
+                            name="plus-circle"
+                            size={size}
+                            color={color}
+                        />
                     ),
                 }}
             />
+
             <Tabs.Screen
                 name="profile"
                 options={{
                     title: "Profile",
+
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="person-outline" size={size} color={color} />
+                        <Ionicons
+                            name="person-outline"
+                            size={size}
+                            color={color}
+                        />
                     ),
                 }}
             />
         </Tabs>
-    )
+    );
 }

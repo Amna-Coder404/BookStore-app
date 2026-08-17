@@ -2,7 +2,7 @@
   "expo": {
     "name": "BookStore-App",
     "slug": "BookStore-App",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "bookstoreapp",
@@ -13,7 +13,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#E6F4FE"
+        "backgroundColor": "#e8f5e9"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.devamna.BookStoreApp"
@@ -27,16 +27,24 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
+          "backgroundColor": "#e8f5e9",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
       ],
-      "expo-image"
+      "expo-image",
+      "expo-status-bar",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "6a64de72-3def-4587-b2b3-c9807b5be8c5"
+      }
     }
   }
 }

@@ -20,6 +20,15 @@ A modern **React Native** book recommendation application built with **Expo**. U
 - 🎨 **Modern UI** – Clean and intuitive interface built with React Native.
 
 ---
+## 📱 Download APK
+
+Want to try the Book Store App on Android?
+
+👉 **[Download the latest APK](https://expo.dev/accounts/devamna/projects/BookStore-App/builds/6e9698e5-6148-4552-a880-7eec689dd0f5)**
+
+> **Note:** This APK is for Android devices. You may need to allow installation from unknown sources when installing it.
+
+
 
 ## 🛠️ Tech Stack
 
@@ -33,44 +42,7 @@ A modern **React Native** book recommendation application built with **Expo**. U
 
 ---
 
-## 🚀 Getting Started
 
-### 1. Clone the repository
-
-### 2. Install dependencies
-
-```bash
-npm install
-```
-
-### 3. Start the development server
-
-```bash
-npx expo start
-```
-
-### 4. Run the application
-
-- Press **a** to run on Android.
-- Press **i** to run on iOS (macOS only).
-- Press **w** to run in your web browser.
-- Or scan the QR code using the **Expo Go** app.
-
----
-
-## 📂 Project Structure
-
-```text
-src/
-├── app/
-├── assets/
-├── components/
-├── constants/
-├── store/
-└── utils/
-```
-
----
 
 ## 📸 Screenshots
 
