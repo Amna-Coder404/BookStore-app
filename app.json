@@ -43,8 +43,10 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "6a64de72-3def-4587-b2b3-c9807b5be8c5"
+        "route": {},
+        "projectId": "4f461a17-bf78-43dd-9d5b-4b8089e0ff22"
       }
-    }
+    },
+    "owner": "mobile-dev-pro"
   }
 }

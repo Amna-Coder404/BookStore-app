@@ -47,3 +47,5 @@ example
 
 # Claude
 .claude/
+
+.env

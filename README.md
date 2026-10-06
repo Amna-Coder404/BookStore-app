@@ -24,7 +24,9 @@ A modern **React Native** book recommendation application built with **Expo**. U
 
 Want to try the Book Store App on Android?
 
-👉 **[Download the latest APK](https://expo.dev/accounts/devamna/projects/BookStore-App/builds/5422777b-362b-497b-991b-7a0363a0642f)**
+
+
+[Download BookStore APK](https://expo.dev/artifacts/eas/09rly5F1I9cVul9IlhsPCKYdIzy64Ne-6VxsEJdyrsk.apk)
 
 > **Note:** This APK is for Android devices. You may need to allow installation from unknown sources when installing it.
 
